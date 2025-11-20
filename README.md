@@ -49,6 +49,7 @@ Need : A single and reliable hub to manage multiple core goals with minimal dist
 
 ### **f. Features & Functionalities**
 1.Hydration tracker 
+
 a.Input & Logging Features :
 
 i.Water Intake Entry:
@@ -59,7 +60,9 @@ Allows users to modify or remove incorrect water logs to maintain accurate daily
 
 iii.Automatic Daily Calculation:
 The app can  continuously sums up all intake entries to show the total water consumed within the day.
+
 b.Goal & Personalization Features
+
 i.Personalized Hydration Goal:
 The module generates a daily water target based on the user’s weight, age, lifestyle, and activity level.
 
@@ -70,7 +73,8 @@ iii.Remaining Water Calculation:
 The app can display how much more water the user needs to drink to meet the daily target.
 
 2.Calorie Tracker
-a.Input & Logging Features
+
+a.Input & Logging Features:
 
 i.Food Item Logging:
 Users can add food items along with their calorie values, either manually or from a predefined food list.
@@ -85,14 +89,15 @@ iv.Automatic Daily Calculation:
  Continuously sums total calorie consumption based on logged meals.
  
 b.Goal & Personalization Features
+
 i.Personalized Daily Calorie Target:
 Generated using factors such as user weight, height, gender, and daily activity level.
 
 ii.Remaining Calorie Calculation:
- Shows calories consumed versus remaining intake for the day.
+Shows calories consumed versus remaining intake for the day.
  
 iii.Diet Preference Settings:
- Users can adjust goals depending on whether they aim to lose, maintain, or gain weight.
+Users can adjust goals depending on whether they aim to lose, maintain, or gain weight.
   
 -
 -
