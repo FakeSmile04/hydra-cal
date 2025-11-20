@@ -49,7 +49,8 @@ Need : A single and reliable hub to manage multiple core goals with minimal dist
 
 ### **f. Features & Functionalities**
 1.Hydration tracker 
-a.Input & Logging Features : 
+a.Input & Logging Features :
+
 i.Water Intake Entry:
 Users can manually log their water intake by selecting preset volumes such as  150ml, 250ml, 500ml or entering a custom amount.
 
@@ -70,6 +71,7 @@ The app can display how much more water the user needs to drink to meet the dail
 
 2.Calorie Tracker
 a.Input & Logging Features
+
 i.Food Item Logging:
 Users can add food items along with their calorie values, either manually or from a predefined food list.
 
