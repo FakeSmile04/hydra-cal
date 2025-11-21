@@ -7,7 +7,7 @@ HydroCal is a wellbeing and lifestyle companion App.
 |1.| Aiman Aqimie Hafiza|2211711|
 |2.|Nik Danish Rifqi Bin Nik Reduan|2215205|
 |3.|Muhammad Hamdi Bin Mohd Najib|2215983|
-|4.|---|---|
+|4.|Muhammad Nazmi bin Fazai|2214005|
 
 ### Task Distribution
 | Stage | Aiman | Nik | Hamdi | Nazmi |
