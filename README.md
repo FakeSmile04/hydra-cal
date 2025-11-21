@@ -98,7 +98,37 @@ Shows calories consumed versus remaining intake for the day.
  
 iii.Diet Preference Settings:
 Users can adjust goals depending on whether they aim to lose, maintain, or gain weight.
-  
+
+***3.Personal trainer***
+
+**a.Input & Logging Features:**
+
+i.Chatbot for hydration/calorie advice:
+Provides personalized real-time guidance on daily hydration needs and calorie intake based on user goals and activity levels.
+ 
+**b.Goal & Personalization Features**
+i.Client personal trainer with specilized trained data:
+Delivers tailored workout and nutrition recommendations using data trained on individual fitness profiles and progress patterns.
+
+***4.Food Scanner***
+
+**a.Input & Logging Features:**
+
+i.Image/text recognition app for scanning item history/components:
+Uses image and text recognition to instantly identify food items and analyze their ingredients, origins, and nutritional details.
+
+ 
+**b.Goal & Personalization Features**
+i.Knowledge about suspicious component in food/label.
+Detects and alerts users about potentially harmful or questionable ingredients in scanned food products.
+
+ii.Safety from harm in food 
+Ensures user protection by highlighting health risks, allergens, or unsafe components found in food items.
+
+iii.Cultural taboo safety
+Flags ingredients that may conflict with cultural, religious, or dietary restrictions to support safe and respectful food choices.
+
+
 -
 -
 
@@ -121,7 +151,7 @@ Users can adjust goals depending on whether they aim to lose, maintain, or gain 
 ## **2.2 Project Planning**
 
 ### **a. Gantt Chart & Timeline**
-Include a Gantt chart (image or table).
+<img width="1024" height="768" alt="Blue Modern Project Timeline Gantt Chart" src="https://github.com/user-attachments/assets/79b6f91a-d378-4da6-b30a-04db04fce654" />
 
 # 3. Project Design
 
