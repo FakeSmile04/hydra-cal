@@ -135,87 +135,73 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ## **1.2 Justification of the Proposed App**
 ---
 
-# 2. Requirement Analysis & Planning
+# 2. Requirement  & Planning
 ---
 
 ## **2.1 Technical Feasibility**
- ### A.Hydration Tracker Feasibility Analysis
+### A.Hydration Tracker Feasibility Analysis
 
 ### CRUD Operations
-
 #### Create
 - **Water Intake Logs**: User manually adds water consumption entries with timestamp, volume (preset: 150ml, 250ml, 500ml, or custom amount), and date
 - **User Profile**: Store user's personal data including weight, age, lifestyle type, and activity level for goal calculation
 - **Daily Hydration Goals**: System generates personalized daily water intake targets based on user profile data
 - **Hydration Reminders**: Users can set customized reminder intervals throughout the day
-
 #### Read
 - **Daily Water Intake Summary**: Fetch and calculate total water consumed for the current day
 - **Historical Data**: Retrieve past hydration logs for weekly/monthly trend analysis
 - **User Profile**: Access stored user information for goal recalculation
 - **Current Progress**: Display remaining water needed to meet daily target
 - **Hydration Statistics**: Read aggregated data for achievement badges and streak tracking
-
 #### Update
 - **Water Intake Entries**: Modify volume or timestamp of existing logs to correct mistakes
 - **User Profile**: Update weight, age, lifestyle, or activity level when user circumstances change
 - **Daily Goals**: Adjust hydration targets manually based on user preference or system recalculation
 - **Reminder Settings**: Change notification frequency and timing
-
 #### Delete
 - **Incorrect Water Logs**: Remove erroneous entries from daily records
 - **Old Historical Data**: Archive or delete logs older than 6-12 months to optimize storage
 
 ### Packages & Plugins
-
 ### Core Functionality
 - **isar** or **sqflite**: Local NoSQL/SQL database for storing water intake logs, user profiles, and goals offline-first
 - **flutter_bloc** or **provider**: State management to separate UI from business logic and data layers
 - **shared_preferences**: Store simple settings like last logged volume, reminder preferences, and UI preferences
-
 ### Notifications & Reminders
 - **flutter_local_notifications**: Schedule and display hydration reminder notifications at user-defined intervals
 - **timezone**: Handle timezone-aware scheduling for accurate reminder timing
-
 ### Data Visualization
 - **fl_chart** or **syncfusion_flutter_charts**: Display hydration progress with circular progress indicators, bar charts for weekly/monthly trends
 - **intl**: Date and time formatting for log entries and reports
-
 ### User Experience
 - **permission_handler**: Request notification permissions for reminder functionality
-### **a. Platform Compatibility**
+### **Platform Compatibility**
 - **Android OS**
----
-
-### **b. Logical Design**
+### **Logical Design**
 - **Sequence Diagram**
 - Hydration Tracker Sequence Diagram 
 -<img width="912" height="1470" alt="Image" src="https://github.com/user-attachments/assets/ba986ec0-05d5-4453-9254-e60abdbfd670" />
 - **Screen Navigation Flow Diagram**
 - Hydration Tracker Screen Navigation Flow Diagram
 -<img width="2561" height="2037" alt="Image" src="https://github.com/user-attachments/assets/53894df8-3859-455c-a509-59c41c348e0f" />
-
- ### B.Food Scanner Feasibility Analysis
- ### CRUD Operations
-
+---
+### B.Food Scanner Feasibility Analysis
+ 
+### CRUD Operations
 #### Create
 - **User Prefrences**: Allergies, diets, prohibited ingredients (ex. Haram substance for Muslims). All set by the user. Can also take data from Personal Trainer feature to set up diet information.
 - **Scan History**: To improve response time on frequently scanned items
-
 #### Read
 - **Product Details**: Fetch data from external food database
 - **User Preferences**: What user has saved as their preferences in food ingredients
-
 #### Update
 - **User Profile**: Modify existing prefrences
 - **Scan History**: Only store last 5-10 items
-
 #### Delete
 - **Scan History**: If scanner isn't used in a while to optimize storage usage
 - **User Preferences**: If user wants to reset their preferences settings
 
 ### Packages & Plugins
-
 - **isar** or **sqflite**: Local NoSQL/SQL database for storing user prefrences and scan history
 - **flutter_bloc** or **provider**: State management to separate UI from business logic and data layers
 - **shared_preferences**: Store simple settings if needed
@@ -223,22 +209,54 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - **openfoodfacts**: To fetch product information based on barcodes
 - **permission_handler**: To ask the user permission to use Camera for barcode scanning
 - **connectivity_plus**: To check if the phone has Internet connectivity for data fetching
-
-### **a. Platform Compatibility**
+### **Platform Compatibility**
 - **Android OS**
----
-
-### **b. Logical Design**
+### **Logical Design**
 - **Sequence Diagram**
 - Food Scanner Sequence Diagram 
 <img width="1321" height="984" alt="Image" src="https://github.com/user-attachments/assets/239a89f5-7902-456d-b194-405ef01d6cfa" />
 - **Screen Navigation Flow Diagram**
 - Food Scanner Screen Navigation Flow Diagram
 <img width="1261" height="984" alt="Image" src="https://github.com/user-attachments/assets/eb58557f-43c2-4854-b7a8-d49b331f2242" />
+---
 
+### C. Calorie Tracker Analysis
+### **CRUD Operations**
+#### Create
+- **Food Intake Logs**: Users manually add food entries containing the Item Name (e.g., "Banana") and Calorie Count.
+- **User Profile**: Captures essential biometrics (Height, Weight, Age, Gender) upon initial setup to inform the BMR algorithm.
+- **Daily Calorie Goals**: The system generates a personalized "Calorie Budget" based on the profile data created.
+#### Read
+- **Daily Feed Summary**: Fetches and calculates the total calories consumed for the current day, displayed as a chronological timeline.
+- **Remaining Budget**: Displays the live difference between the Daily Goal and the sum of today's active logs.
+- **Historical Data**: Retrieves past logs allowing users to scroll back to previous dates to view consumption history.
+- **User Profile**: Accesses stored weight and height to periodically re-verify the daily goal.
+#### Update
+- **Log Correction**: Modifies the calorie count or name of an existing log (e.g., correcting "100 kcal" to "150 kcal") if the user made a mistake.
+- **User Profile**: Updates weight or age as the user progresses, which triggers a recalculation of the Daily Calorie Goal.
+- **Undo Logic (Soft Delete Restoration)**: Updates a "deleted" record's status back to "active" if the user presses Undo.
+#### Delete
+- **Erroneous Logs (Soft Delete)**: Marks an entry as "inactive" (hidden from the user) without permanently removing it from the database immediately, allowing for the Undo feature.
+- **Account Reset**: Permanently removes all logs associated with a user ID if they request a full data wipe.
+
+### Packages & Plugins
+- **flutter_bloc**: Provides predictable state management to handle complex logic states, such as recalculating "Remaining Calories" instantly when a log is added or undone.
+- **intl**: Critical for the chronological feed, enabling advanced date formatting (e.g., "Today", "Yesterday") and time sorting logic.
+- **percent_indicator**: A focused package for displaying the "Daily Calorie Budget" progress bar (Consumed vs. Remaining).
+- **fl_chart**: Used for the "History" view to render bar charts showing calorie consumption trends over the last 7 days.
+- **fluttertoast**: Displays the temporary "Entry Deleted (Undo)" popup message when a user performs a soft delete.
+- 
+### **Platform Compatibility**
+- **Android OS**
+
+### **Logical Design**
+- **Sequence Diagram**
+- Calorie Tracker Sequence Diagram 
+
+- **Screen Navigation Flow Diagram**
+- Calorie Tracker Screen Navigation Flow Diagram
 
 ## **2.2 Project Planning**
-
 ### **a. Gantt Chart & Timeline**
 <img width="1024" height="768" alt="Blue Modern Project Timeline Gantt Chart" src="https://github.com/user-attachments/assets/79b6f91a-d378-4da6-b30a-04db04fce654" />
 
