@@ -184,6 +184,7 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ### User Experience
 - **permission_handler**: Request notification permissions for reminder functionality
 ### **a. Platform Compatibility**
+- **Android OS**
 ---
 
 ### **b. Logical Design**
@@ -193,6 +194,49 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - **Screen Navigation Flow Diagram**
 - Hydration Tracker Screen Navigation Flow Diagram
 -<img width="2561" height="2037" alt="Image" src="https://github.com/user-attachments/assets/53894df8-3859-455c-a509-59c41c348e0f" />
+
+ ### B.Food Scanner Feasibility Analysis
+ ### CRUD Operations
+
+#### Create
+- **User Prefrences**: Allergies, diets, prohibited ingredients (ex. Haram substance for Muslims). All set by the user. Can also take data from Personal Trainer feature to set up diet information.
+- **Scan History**: To improve response time on frequently scanned items
+
+#### Read
+- **Product Details**: Fetch data from external food database
+- **User Preferences**: What user has saved as their preferences in food ingredients
+
+#### Update
+- **User Profile**: Modify existing prefrences
+- **Scan History**: Only store last 5-10 items
+
+#### Delete
+- **Scan History**: If scanner isn't used in a while to optimize storage usage
+- **User Preferences**: If user wants to reset their preferences settings
+
+### Packages & Plugins
+
+- **isar** or **sqflite**: Local NoSQL/SQL database for storing user prefrences and scan history
+- **flutter_bloc** or **provider**: State management to separate UI from business logic and data layers
+- **shared_preferences**: Store simple settings if needed
+- **mobile_scanner**: For barcode detection
+- **openfoodfacts**: To fetch product information based on barcodes
+- **permission_handler**: To ask the user permission to use Camera for barcode scanning
+- **connectivity_plus**: To check if the phone has Internet connectivity for data fetching
+
+### **a. Platform Compatibility**
+- **Android OS**
+---
+
+### **b. Logical Design**
+- **Sequence Diagram**
+- Food Scanner Sequence Diagram 
+<img width="1321" height="984" alt="Image" src="https://github.com/user-attachments/assets/239a89f5-7902-456d-b194-405ef01d6cfa" />
+- **Screen Navigation Flow Diagram**
+- Food Scanner Screen Navigation Flow Diagram
+<img width="1261" height="984" alt="Image" src="https://github.com/user-attachments/assets/eb58557f-43c2-4854-b7a8-d49b331f2242" />
+
+
 ## **2.2 Project Planning**
 
 ### **a. Gantt Chart & Timeline**
