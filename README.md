@@ -139,7 +139,7 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ---
 
 ## **2.1 Technical Feasibility**
-- ### A.Hydration Tracker Feasibility Analysis
+ ### A.Hydration Tracker Feasibility Analysis
 
 ### CRUD Operations
 
@@ -188,8 +188,11 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 
 ### **b. Logical Design**
 - **Sequence Diagram**
+- Hydration Tracker Sequence Diagram 
+-<img width="912" height="1470" alt="Image" src="https://github.com/user-attachments/assets/ba986ec0-05d5-4453-9254-e60abdbfd670" />
 - **Screen Navigation Flow Diagram**
-
+- Hydration Tracker Screen Navigation Flow Diagram
+-<img width="2561" height="2037" alt="Image" src="https://github.com/user-attachments/assets/53894df8-3859-455c-a509-59c41c348e0f" />
 ## **2.2 Project Planning**
 
 ### **a. Gantt Chart & Timeline**
