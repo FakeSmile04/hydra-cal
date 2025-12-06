@@ -257,10 +257,6 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - **Screen Navigation Flow Diagram**
 - Calorie Tracker Screen Navigation Flow Diagram
 
-## **2.2 Project Planning**
-### **a. Gantt Chart & Timeline**
-<img width="1024" height="768" alt="Blue Modern Project Timeline Gantt Chart" src="https://github.com/user-attachments/assets/79b6f91a-d378-4da6-b30a-04db04fce654" />
-
 ### D.Personal trainer
 ### **CRUD Operations**
 #### Create
@@ -286,11 +282,16 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 
 ### **Logical Design**
 - **Sequence Diagram**
-- Calorie Tracker Sequence Diagram
+- Personal Trainer Sequence Diagram
 <img width="884" height="793" alt="diag_mobile drawio (1)" src="https://github.com/user-attachments/assets/df872583-263c-4c0a-b4f4-b9249b0ba3be" />
 
 - **Screen Navigation Flow Diagram**
-- Calorie Tracker Screen Navigation Flow Diagram
+- Personal Trainer Screen Navigation Flow Diagram
+<img width="984" height="1188" alt="nav_mobile drawio" src="https://github.com/user-attachments/assets/7883d71a-d28b-445c-a29d-5f9a39b7ddf7" />
+
+## **2.2 Project Planning**
+### **a. Gantt Chart & Timeline**
+<img width="1024" height="768" alt="Blue Modern Project Timeline Gantt Chart" src="https://github.com/user-attachments/assets/79b6f91a-d378-4da6-b30a-04db04fce654" />
 
 # 3. Project Design
 
