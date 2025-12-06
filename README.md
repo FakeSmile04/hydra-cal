@@ -252,10 +252,11 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ### **Logical Design**
 - **Sequence Diagram**
 - Calorie Tracker Sequence Diagram
-- <img width="2356" height="2424" alt="Image" src="https://github.com/user-attachments/assets/d3e0e81c-21b9-4b76-85c0-0848b8250109" />
+<img width="2356" height="2424" alt="Image" src="https://github.com/user-attachments/assets/d3e0e81c-21b9-4b76-85c0-0848b8250109" />
 
 - **Screen Navigation Flow Diagram**
 - Calorie Tracker Screen Navigation Flow Diagram
+<img width="2356" height="2424" alt="Image" src="https://github.com/user-attachments/assets/9a66bfa1-d0a7-4b81-9e57-8f875f6ff9ac" />
 
 ### D.Personal trainer
 ### **CRUD Operations**
