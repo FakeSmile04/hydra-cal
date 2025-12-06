@@ -257,6 +257,38 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - **Screen Navigation Flow Diagram**
 - Calorie Tracker Screen Navigation Flow Diagram
 
+### D.Personal trainer
+### **CRUD Operations**
+#### Create
+- **Query**: Users type in the query for the chatbot
+- **User History**: Captures the query and response history
+- **Response**: The system generates repsonse based on user preference, activity and goals
+#### Read
+- **User preference, activity and goals**: Fetches and calculates response using these
+- **Chats history**: Retrieves past logs allowing users to scroll back to previous dates to view chat history
+#### Update
+- **Chats history**: Update the chats history 
+#### Delete
+- **Chats history**: Delete the chat history if requested
+
+### Packages & Plugins
+- **llama-cpp-python**: Run llama for chatbot locally
+- **isar** or **sqflite**: Sotring user chat logs
+- **react-chat-ui**: chat interface
+- **logging**:system log
+
+### **Platform Compatibility**
+- **Android OS**
+
+### **Logical Design**
+- **Sequence Diagram**
+- Personal Trainer Sequence Diagram
+<img width="884" height="793" alt="diag_mobile drawio (1)" src="https://github.com/user-attachments/assets/df872583-263c-4c0a-b4f4-b9249b0ba3be" />
+
+- **Screen Navigation Flow Diagram**
+- Personal Trainer Screen Navigation Flow Diagram
+<img width="984" height="1188" alt="nav_mobile drawio" src="https://github.com/user-attachments/assets/7883d71a-d28b-445c-a29d-5f9a39b7ddf7" />
+
 ## **2.2 Project Planning**
 ### **a. Gantt Chart & Timeline**
 <img width="1024" height="768" alt="Blue Modern Project Timeline Gantt Chart" src="https://github.com/user-attachments/assets/79b6f91a-d378-4da6-b30a-04db04fce654" />
