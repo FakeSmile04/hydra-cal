@@ -7,7 +7,7 @@ HydroCal is a wellbeing and lifestyle companion App.
 |1.| Aiman Aqimie Hafiza|2211711|
 |2.|Nik Danish Rifqi Bin Nik Reduan|2215205|
 |3.|Muhammad Hamdi Bin Mohd Najib|2215983|
-|4.|Muhammad Nazmi bin Fazai|2214005|
+|4.|Muhammad Nazmi bin Fazail|2214005|
 
 ### Task Distribution
 | Stage | Aiman | Nik | Hamdi | Nazmi |
@@ -212,12 +212,18 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ### **Platform Compatibility**
 - **Android OS**
 ### **Logical Design**
-- **Sequence Diagram**
-- Food Scanner Sequence Diagram 
+- **Sequence Diagram** 
+- Food Scanner Sequence Diagram     
 <img width="1321" height="984" alt="Image" src="https://github.com/user-attachments/assets/239a89f5-7902-456d-b194-405ef01d6cfa" />
+
 - **Screen Navigation Flow Diagram**
-- Food Scanner Screen Navigation Flow Diagram
+
+- Food Scanner Screen Navigation Flow Diagram     
 <img width="1261" height="984" alt="Image" src="https://github.com/user-attachments/assets/eb58557f-43c2-4854-b7a8-d49b331f2242" />
+
+- Detailed Screen Wireframe
+<img width="648" height="1211" alt="Image" src="https://github.com/user-attachments/assets/50363f26-80ec-43db-88f9-a48bd20edbbf" />
+
 ---
 
 ### C. Calorie Tracker Analysis
