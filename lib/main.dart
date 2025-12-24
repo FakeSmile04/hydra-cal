@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +26,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _word = '';
-  List<String> _characters = [];
   int _characterCount = 0;
   int _vowelCount = 0;
   int _consonantCount = 0;
@@ -40,13 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _analyzeWord() {
     setState(() {
-      _characters = _word.split('');
-      _characterCount = _characters.length;
+      _characterCount = _word.length;
       
       _vowelCount = 0;
       _consonantCount = 0;
       
-      for (String char in _characters) {
+      for (String char in _word.split('')) {
         String lowerChar = char.toLowerCase();
         if (RegExp(r'[aeiou]').hasMatch(lowerChar)) {
           _vowelCount++;
