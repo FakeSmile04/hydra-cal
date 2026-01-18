@@ -1,5 +1,5 @@
-# HydroCal
-HydroCal is a wellbeing and lifestyle companion App.
+# HydraCal
+HydraCal is a wellbeing and lifestyle companion App.
 <br>
 ### Group Members
 |No.| Name       | Matric No |

@@ -566,7 +566,7 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "mobapp_gpproject_hydracal_foodscanner",
+      "name": "hydra_cal",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.10"

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobapp_gpproject_hydracal_foodscanner/foodScanner/home_page.dart';
+import 'package:hydra_cal/food_scanner/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'HydraCal - Food Scanner',
+      title: 'HydraCal',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // Fixed the ".fromSeed" syntax error

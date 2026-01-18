@@ -1,10 +1,10 @@
 {
   "roots": [
-    "mobapp_gpproject_hydracal_foodscanner"
+    "hydra_cal"
   ],
   "packages": [
     {
-      "name": "mobapp_gpproject_hydracal_foodscanner",
+      "name": "hydra_cal",
       "version": "1.0.0+1",
       "dependencies": [
         "cupertino_icons",
@@ -621,6 +621,14 @@
       ]
     },
     {
+      "name": "equatable",
+      "version": "2.0.8",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
+    },
+    {
       "name": "path_provider_windows",
       "version": "2.3.0",
       "dependencies": [
@@ -872,14 +880,6 @@
       "name": "vm_service",
       "version": "15.0.2",
       "dependencies": []
-    },
-    {
-      "name": "equatable",
-      "version": "2.0.8",
-      "dependencies": [
-        "collection",
-        "meta"
-      ]
     }
   ],
   "configVersion": 1
