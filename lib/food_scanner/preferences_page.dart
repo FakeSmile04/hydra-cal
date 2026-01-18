@@ -124,9 +124,10 @@ class _FoodScannerPreferencesPageState
           // save & exit button
           FilledButton(
             onPressed: () async {
-              Navigator.of(context).pop(false); //close dialog box
+              final nav = Navigator.of(context);
+              nav.pop(false); //close dialog box
               await _saveChanges();
-              if (mounted) Navigator.of(context).pop();
+              if (mounted) nav.pop();
             },
             child: const Text('Save & Exit'),
           ),
@@ -148,7 +149,7 @@ class _FoodScannerPreferencesPageState
     return PopScope(
       canPop:
           !_hasUnsavedChanges, // only allow pop if there are no unsaved changes
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, result) async {
         if (didPop) return;
         _showExitConfirmation(); // show dialog box
       },
