@@ -8,12 +8,15 @@
       "version": "1.0.0+1",
       "dependencies": [
         "cupertino_icons",
+        "fl_chart",
         "flutter",
+        "intl",
         "isar",
         "isar_flutter_libs",
         "mobile_scanner",
         "openfoodfacts",
-        "path_provider"
+        "path_provider",
+        "percent_indicator"
       ],
       "devDependencies": [
         "build_runner",
@@ -100,6 +103,31 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "fl_chart",
+      "version": "1.1.1",
+      "dependencies": [
+        "equatable",
+        "flutter",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "percent_indicator",
+      "version": "4.2.5",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "intl",
+      "version": "0.20.2",
+      "dependencies": [
+        "clock",
+        "meta",
+        "path"
       ]
     },
     {
@@ -844,6 +872,14 @@
       "name": "vm_service",
       "version": "15.0.2",
       "dependencies": []
+    },
+    {
+      "name": "equatable",
+      "version": "2.0.8",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
     }
   ],
   "configVersion": 1
