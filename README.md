@@ -7,7 +7,7 @@ HydroCal is a wellbeing and lifestyle companion App.
 |1.| Aiman Aqimie Hafiza|2211711|
 |2.|Nik Danish Rifqi Bin Nik Reduan|2215205|
 |3.|Muhammad Hamdi Bin Mohd Najib|2215983|
-|4.|Muhammad Nazmi bin Fazai|2214005|
+|4.|Muhammad Nazmi bin Fazail|2214005|
 
 ### Task Distribution
 | Stage | Aiman | Nik | Hamdi | Nazmi |
@@ -212,12 +212,18 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ### **Platform Compatibility**
 - **Android OS**
 ### **Logical Design**
-- **Sequence Diagram**
-- Food Scanner Sequence Diagram 
+- **Sequence Diagram** 
+- Food Scanner Sequence Diagram     
 <img width="1321" height="984" alt="Image" src="https://github.com/user-attachments/assets/239a89f5-7902-456d-b194-405ef01d6cfa" />
+
 - **Screen Navigation Flow Diagram**
-- Food Scanner Screen Navigation Flow Diagram
+
+- Food Scanner Screen Navigation Flow Diagram     
 <img width="1261" height="984" alt="Image" src="https://github.com/user-attachments/assets/eb58557f-43c2-4854-b7a8-d49b331f2242" />
+
+- Detailed Screen Wireframe
+<img width="648" height="1211" alt="Image" src="https://github.com/user-attachments/assets/50363f26-80ec-43db-88f9-a48bd20edbbf" />
+
 ---
 
 ### C. Calorie Tracker Analysis
@@ -252,10 +258,43 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ### **Logical Design**
 - **Sequence Diagram**
 - Calorie Tracker Sequence Diagram
-- <img width="2356" height="2424" alt="Image" src="https://github.com/user-attachments/assets/d3e0e81c-21b9-4b76-85c0-0848b8250109" />
+<img width="2356" height="2424" alt="Image" src="https://github.com/user-attachments/assets/d3e0e81c-21b9-4b76-85c0-0848b8250109" />
 
 - **Screen Navigation Flow Diagram**
 - Calorie Tracker Screen Navigation Flow Diagram
+<img width="2356" height="2424" alt="Image" src="https://github.com/user-attachments/assets/9a66bfa1-d0a7-4b81-9e57-8f875f6ff9ac" />
+
+### D.Personal trainer
+### **CRUD Operations**
+#### Create
+- **Query**: Users type in the query for the chatbot
+- **User History**: Captures the query and response history
+- **Response**: The system generates repsonse based on user preference, activity and goals
+#### Read
+- **User preference, activity and goals**: Fetches and calculates response using these
+- **Chats history**: Retrieves past logs allowing users to scroll back to previous dates to view chat history
+#### Update
+- **Chats history**: Update the chats history 
+#### Delete
+- **Chats history**: Delete the chat history if requested
+
+### Packages & Plugins
+- **llama-cpp-python**: Run llama for chatbot locally
+- **isar** or **sqflite**: Sotring user chat logs
+- **react-chat-ui**: chat interface
+- **logging**:system log
+
+### **Platform Compatibility**
+- **Android OS**
+
+### **Logical Design**
+- **Sequence Diagram**
+- Personal Trainer Sequence Diagram
+<img width="884" height="793" alt="diag_mobile drawio (1)" src="https://github.com/user-attachments/assets/df872583-263c-4c0a-b4f4-b9249b0ba3be" />
+
+- **Screen Navigation Flow Diagram**
+- Personal Trainer Screen Navigation Flow Diagram
+<img width="984" height="1188" alt="nav_mobile drawio" src="https://github.com/user-attachments/assets/7883d71a-d28b-445c-a29d-5f9a39b7ddf7" />
 
 ## **2.2 Project Planning**
 ### **a. Gantt Chart & Timeline**
@@ -273,3 +312,6 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ---
 
 # References
+[Weekly Progress Report.docx](https://github.com/user-attachments/files/24303767/Weekly.Progress.Report.docx)
+
+#Weekly Report
