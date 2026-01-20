@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "487155350009",
+    "project_id": "hydracal",
+    "storage_bucket": "hydracal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487155350009:android:62b17cade373663d6c6528",
+        "android_client_info": {
+          "package_name": "com.example.mobapp_gpproject_hydracal_foodscanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDufRrM_MaGlTcNIGd6WR_hbmk83qwPTX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

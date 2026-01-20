@@ -7,6 +7,7 @@ import '../screens/meal_detail_screen.dart';
 import '../widgets/calorie_circle.dart';
 import '../widgets/meal_card.dart';
 import '../../food_scanner/home_page.dart';
+import '../services/firestore_meals_service.dart';
 
 /// Main screen for the calorie tracker feature
 class CalorieTrackerScreen extends StatefulWidget {
@@ -18,36 +19,80 @@ class CalorieTrackerScreen extends StatefulWidget {
 
 class _CalorieTrackerScreenState extends State<CalorieTrackerScreen> {
   late int _dailyGoal;
-  final List<Meal> _meals = [];
+  List<Meal> _meals = [];
+  late FirestoreMealsService _firestoreService;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _dailyGoal = AppValues.defaultDailyGoal;
+    _firestoreService = FirestoreMealsService();
+    _loadInitialData();
   }
 
-  /// Add a new meal to the list
-  void _addMeal(Meal meal) {
-    setState(() {
-      _meals.add(meal);
-    });
+  /// Load initial data from Firestore
+  Future<void> _loadInitialData() async {
+    try {
+      final goal = await _firestoreService.getDailyGoal();
+      final meals = await _firestoreService.getTodayMeals();
+      
+      setState(() {
+        _dailyGoal = goal;
+        _meals = meals;
+        _isLoading = false;
+      });
+    } catch (e) {
+      print('Error loading data: $e');
+      setState(() => _isLoading = false);
+    }
   }
 
-  /// Update an existing meal
-  void _updateMeal(Meal updatedMeal) {
-    setState(() {
-      final index = _meals.indexWhere((m) => m.id == updatedMeal.id);
-      if (index != -1) {
-        _meals[index] = updatedMeal;
-      }
-    });
+  /// Add a new meal to Firestore
+  void _addMeal(Meal meal) async {
+    try {
+      await _firestoreService.addMeal(meal);
+      setState(() {
+        _meals.add(meal);
+      });
+    } catch (e) {
+      print('Error adding meal: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to add meal')),
+      );
+    }
   }
 
-  /// Delete a meal
-  void _deleteMeal(String mealId) {
-    setState(() {
-      _meals.removeWhere((m) => m.id == mealId);
-    });
+  /// Update an existing meal in Firestore
+  void _updateMeal(Meal updatedMeal) async {
+    try {
+      await _firestoreService.updateMeal(updatedMeal);
+      setState(() {
+        final index = _meals.indexWhere((m) => m.id == updatedMeal.id);
+        if (index != -1) {
+          _meals[index] = updatedMeal;
+        }
+      });
+    } catch (e) {
+      print('Error updating meal: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to update meal')),
+      );
+    }
+  }
+
+  /// Delete a meal from Firestore
+  void _deleteMeal(String mealId) async {
+    try {
+      await _firestoreService.deleteMeal(mealId);
+      setState(() {
+        _meals.removeWhere((m) => m.id == mealId);
+      });
+    } catch (e) {
+      print('Error deleting meal: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to delete meal')),
+      );
+    }
   }
 
   /// Calculate total calories consumed
@@ -131,19 +176,30 @@ class _CalorieTrackerScreenState extends State<CalorieTrackerScreen> {
               child: const Text('Cancel'),
             ),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 final newGoal = int.tryParse(textController.text);
                 if (newGoal != null && newGoal > 0) {
-                  setState(() {
-                    _dailyGoal = newGoal;
-                  });
-                  Navigator.pop(context);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Daily goal updated to $newGoal calories'),
-                      duration: const Duration(seconds: 2),
-                    ),
-                  );
+                  try {
+                    await _firestoreService.saveDailyGoal(newGoal);
+                    setState(() {
+                      _dailyGoal = newGoal;
+                    });
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Daily goal updated to $newGoal calories'),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  } catch (e) {
+                    print('Error saving goal: $e');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Failed to save daily goal'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -163,6 +219,15 @@ class _CalorieTrackerScreenState extends State<CalorieTrackerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return Scaffold(
+        appBar: _buildAppBar(),
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: _buildAppBar(),
       body: Column(

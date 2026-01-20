@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hydra_cal/firebase_options.dart';
 import 'calorie-tracker/screens/calorie_tracker_screen.dart';
 import 'calorie-tracker/constants/app_colors.dart';
 import 'hydration features/hydration_tracker_screen.dart';
 import 'food_scanner/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
