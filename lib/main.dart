@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'constants/app_colors.dart';
+import 'calorie-tracker/screens/home_screen.dart';
+import 'calorie-tracker/constants/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
