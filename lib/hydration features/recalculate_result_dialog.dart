@@ -13,7 +13,7 @@ class RecalculateResultDialog extends StatelessWidget {
   final String activityLevel;
   final String gender;
 
-  const RecalculateResultDialog({
+  const RecalculateResultDialog({super.key, 
     required this.weight,
     required this.age,
     required this.activityLevel,

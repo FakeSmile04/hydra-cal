@@ -13,7 +13,7 @@ import 'app_input_decoration.dart';
 class CustomInputDialog extends StatefulWidget {
   final WaterLog? existingLog;
 
-  const CustomInputDialog({Key? key, this.existingLog}) : super(key: key);
+  const CustomInputDialog({super.key, this.existingLog});
 
   @override
   _CustomInputDialogState createState() => _CustomInputDialogState();

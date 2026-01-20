@@ -4,6 +4,8 @@ import 'database_service.dart';
 
 /// shows bar chart, average, and best day
 class WeeklyStatsScreen extends StatefulWidget {
+  const WeeklyStatsScreen({super.key});
+
   @override
   _WeeklyStatsScreenState createState() => _WeeklyStatsScreenState();
 }
@@ -95,7 +97,7 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
             SizedBox(height: 24),
 
             // bar chart
-            Container(
+            SizedBox(
               height: 300,
               child: BarChart(
                 BarChartData(

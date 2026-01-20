@@ -3,13 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'water_log.dart';
-import 'app_colors.dart';
-import 'app_text_styles.dart';
-import 'app_spacing.dart';
-import 'app_buttons.dart';
-import 'app_icons.dart';
-import 'app_card.dart';
-import 'custom_input_dialog.dart';
 import 'settings_screen.dart';
 import 'weekly_stats_screen.dart';
 import 'database_service.dart';
@@ -18,6 +11,8 @@ import 'database_service.dart';
 
 
 class HydrationTrackerScreen extends StatefulWidget {
+  const HydrationTrackerScreen({super.key});
+
   @override
   _HydrationTrackerScreenState createState() => _HydrationTrackerScreenState();
 }
@@ -222,7 +217,7 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
         if (_logs.isEmpty)
           _buildEmptyState()
         else
-          ..._logs.map((log) => _buildLogItem(log)).toList(),
+          ..._logs.map((log) => _buildLogItem(log)),
       ],
     );
   }

@@ -7,11 +7,11 @@ class AppCard extends StatelessWidget {
   final BoxDecoration? decoration;
 
   const AppCard({
-    Key? key,
+    super.key,
     required this.child,
     this.padding,
     this.decoration,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'app_colors.dart';
-import 'app_text_styles.dart';
-import 'app_spacing.dart';
-import 'app_buttons.dart';
-import 'app_input_decoration.dart';
-import 'app_card.dart';
-import 'recalculate_result_dialog.dart';
-import 'package:flutter/material.dart';
 import 'database_service.dart';
-import 'user_settings.dart';
 
 class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
+
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
