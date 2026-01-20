@@ -6,6 +6,7 @@ import '../models/meal.dart';
 import '../screens/meal_detail_screen.dart';
 import '../widgets/calorie_circle.dart';
 import '../widgets/meal_card.dart';
+import '../../food_scanner/home_page.dart';
 
 /// Main screen for the calorie tracker feature
 class CalorieTrackerScreen extends StatefulWidget {
@@ -16,8 +17,14 @@ class CalorieTrackerScreen extends StatefulWidget {
 }
 
 class _CalorieTrackerScreenState extends State<CalorieTrackerScreen> {
-  final int _dailyGoal = AppValues.defaultDailyGoal;
+  late int _dailyGoal;
   final List<Meal> _meals = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _dailyGoal = AppValues.defaultDailyGoal;
+  }
 
   /// Add a new meal to the list
   void _addMeal(Meal meal) {
@@ -91,12 +98,66 @@ class _CalorieTrackerScreenState extends State<CalorieTrackerScreen> {
 
   /// Handle scan food button press
   void _onScanFood() {
-    // TODO: Implement barcode/food scanning functionality
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Scan Food feature coming soon!'),
-        duration: Duration(seconds: 2),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const FoodScannerHomePage(),
       ),
+    );
+  }
+
+  /// Show dialog to edit daily calorie goal
+  Future<void> _showEditDailyGoalDialog() async {
+    final textController = TextEditingController(text: _dailyGoal.toString());
+    
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Edit Daily Goal'),
+          content: TextField(
+            controller: textController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              hintText: 'Enter daily calorie goal',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                final newGoal = int.tryParse(textController.text);
+                if (newGoal != null && newGoal > 0) {
+                  setState(() {
+                    _dailyGoal = newGoal;
+                  });
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Daily goal updated to $newGoal calories'),
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please enter a valid number'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -163,9 +224,18 @@ class _CalorieTrackerScreenState extends State<CalorieTrackerScreen> {
               color: AppColors.textPrimary,
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.add, color: AppColors.textSecondary),
-            onPressed: _showAddMealDialog,
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.edit, color: AppColors.textSecondary, size: 20),
+                onPressed: _showEditDailyGoalDialog,
+                tooltip: 'Edit daily goal',
+              ),
+              IconButton(
+                icon: const Icon(Icons.add, color: AppColors.textSecondary),
+                onPressed: _showAddMealDialog,
+              ),
+            ],
           ),
         ],
       ),
