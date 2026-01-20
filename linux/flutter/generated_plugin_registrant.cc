@@ -13,3 +13,14 @@ void fl_register_plugins(FlPluginRegistry* registry) {
       fl_plugin_registry_get_registrar_for_plugin(registry, "IsarFlutterLibsPlugin");
   isar_flutter_libs_plugin_register_with_registrar(isar_flutter_libs_registrar);
 }
+//
+//  Generated file. Do not edit.
+//
+
+// clang-format off
+
+#include "generated_plugin_registrant.h"
+
+
+void fl_register_plugins(FlPluginRegistry* registry) {
+}
