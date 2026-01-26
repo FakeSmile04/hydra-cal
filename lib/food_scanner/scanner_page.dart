@@ -127,7 +127,7 @@ class _FoodScannerCameraPageState extends State<FoodScannerCameraPage> {
       if (result.status == ProductResultV3.statusSuccess &&
           result.product != null) {
         //save results to scan history
-        final isar = Isar.getInstance();
+        final isar = Isar.getInstance('food_scanner_db');
         if (isar != null) {
           final historyItem = ScannedProduct()
             ..barcode = result.product!.barcode ?? code

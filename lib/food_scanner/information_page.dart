@@ -29,7 +29,7 @@ class _FoodScannerInformationPageState
 
   // analyze product details against user preferences
   Future<void> _analyzeProductSafety() async {
-    final isar = Isar.getInstance();
+    final isar = Isar.getInstance('food_scanner_db');
 
     // make sure database is already initialized
     if (isar == null) {

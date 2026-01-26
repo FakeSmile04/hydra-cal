@@ -32,14 +32,15 @@ class _FoodScannerHomePageState extends State<FoodScannerHomePage> {
     final dir = await getApplicationDocumentsDirectory();
 
     // check if instance is already open to avoid errors
-    Isar? isar = Isar.getInstance();
+    Isar? isar = Isar.getInstance('food_scanner_db');
 
     // open the flagged ingredient and scanned products databases
     // if it's not opened yet
-    isar ??= await Isar.open([
-      FlaggedIngredientSchema,
-      ScannedProductSchema,
-    ], directory: dir.path);
+    isar ??= await Isar.open(
+      [FlaggedIngredientSchema, ScannedProductSchema],
+      directory: dir.path,
+      name: 'food_scanner_db',
+    );
 
     // seed common 14 allergens if database is empty
     if (await isar.flaggedIngredients.count() == 0) {
@@ -121,7 +122,7 @@ class _FoodScannerHomePageState extends State<FoodScannerHomePage> {
 
   // show 5 recent scans in a bottom sheet
   void _showScanHistory() async {
-    final isar = Isar.getInstance();
+    final isar = Isar.getInstance('food_scanner_db');
     if (isar == null) return;
 
     final history = await isar.scannedProducts
@@ -267,7 +268,10 @@ class _FoodScannerHomePageState extends State<FoodScannerHomePage> {
             FilledButton.tonalIcon(
               onPressed: _goToPreferences,
               icon: const Icon(Icons.settings_outlined, size: 32),
-              label: const Text('Preferences', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400)),
+              label: const Text(
+                'Preferences',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+              ),
               style: FilledButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 40,

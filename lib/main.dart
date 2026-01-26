@@ -5,8 +5,15 @@ import 'calorie-tracker/constants/app_colors.dart';
 import 'hydration features/hydration_tracker_screen.dart';
 import 'food_scanner/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'hydration features/database_service.dart';
 
 Future<void> main() async{
+  // ensure flutter bindings are initialized
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // initialize Isar database (for hydration tracker)
+  await DatabaseService().initialize();
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -144,7 +151,7 @@ class MyHomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.3),
+            color: color.withValues(alpha: 0.3),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -162,7 +169,7 @@ class MyHomePage extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [color, color.withOpacity(0.8)],
+                colors: [color, color.withValues(alpha: 0.8)],
               ),
             ),
             child: Row(

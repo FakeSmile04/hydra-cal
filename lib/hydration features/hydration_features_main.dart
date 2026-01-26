@@ -1,3 +1,7 @@
+// **************************************
+// UNUSED - PLACEHOLDER main.dart for hydration features
+// **************************************
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'hydration_tracker_screen.dart';

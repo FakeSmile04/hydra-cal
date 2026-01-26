@@ -30,7 +30,7 @@ class _FoodScannerPreferencesPageState
 
   // load flagged ingredients from database
   Future<void> _loadData() async {
-    final isar = Isar.getInstance();
+    final isar = Isar.getInstance('food_scanner_db');
     if (isar != null) {
       _isar = isar;
 
