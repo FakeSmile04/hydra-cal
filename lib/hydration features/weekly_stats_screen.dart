@@ -32,6 +32,41 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return Scaffold(
+        appBar: AppBar(title: Text('Weekly Statistics')),
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    // This is to handle empty data, if there is no water intake
+    if (_weeklyData.isEmpty) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text(
+            'Weekly Statistics',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          backgroundColor: Color(0xFF03A9F4),
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+        body: Center(
+          child: Text(
+            'No data available for this week',
+            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+          ),
+        ),
+      );
+    }
     //calculate average
     final totalIntake = _weeklyData.values.reduce((a, b) => a + b);
     final average = (totalIntake / 7).round();
@@ -233,4 +268,5 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
     };
     return dayNames[shortName] ?? shortName;
   }
+
 }
