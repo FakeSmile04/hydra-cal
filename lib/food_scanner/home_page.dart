@@ -8,6 +8,7 @@ import 'package:hydra_cal/food_scanner/preferences_page.dart';
 import 'package:hydra_cal/food_scanner/information_page.dart';
 import 'flagged_ingredient.dart'; // list of ingredients that can be flagged
 import 'scanned_product.dart'; // list of scanned products
+import 'package:hydra_cal/calorie-tracker/constants/app_colors.dart';
 
 class FoodScannerHomePage extends StatefulWidget {
   const FoodScannerHomePage({super.key});
@@ -151,7 +152,7 @@ class _FoodScannerHomePageState extends State<FoodScannerHomePage> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               const Divider(),
@@ -216,7 +217,7 @@ class _FoodScannerHomePageState extends State<FoodScannerHomePage> {
       return Scaffold(
         appBar: AppBar(
           title: const Text('Loading...'),
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: AppColors.primary,
         ),
         body: const Center(
           child: Column(
@@ -234,9 +235,9 @@ class _FoodScannerHomePageState extends State<FoodScannerHomePage> {
     // home page UI
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Food Scanner'),
+        title: const Text('Food Scanner', style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: AppColors.primary,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _showScanHistory,

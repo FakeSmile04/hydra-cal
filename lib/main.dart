@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hydra_cal/database.dart';
 import 'package:hydra_cal/firebase_options.dart';
 import 'calorie-tracker/screens/calorie_tracker_screen.dart';
 import 'calorie-tracker/constants/app_colors.dart';
@@ -6,18 +7,21 @@ import 'hydration features/hydration_tracker_screen.dart';
 import 'food_scanner/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'hydration features/database_service.dart';
+import 'guidebot/guidebot.dart';
+import 'guidebot/chat_database_service.dart';
 
 Future<void> main() async{
   // ensure flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // initialize Isar database (for hydration tracker)
-  await DatabaseService().initialize();
-  
-  WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // initialize Isar database (for hydration tracker)
+  //await DatabaseService().initialize();
+  await AppDatabaseService().initialize();
+
   runApp(const MyApp());
 }
 
@@ -45,12 +49,6 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        title: Text(title),
-        centerTitle: true,
-        elevation: 0,
-      ),
       body: Container(
         color: AppColors.background,
         child: Center(
@@ -130,6 +128,24 @@ class MyHomePage extends StatelessWidget {
                       );
                     },
                   ),
+
+                  const SizedBox(height: 20),
+                  
+                  // Food Scanner Button
+                  _buildFeatureButton(
+                    context: context,
+                    icon: Icons.chat,
+                    label: 'Guide Bot',
+                    color: AppColors.primary,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GuideBotScreen(),
+                        ),
+                      );
+                    },
+                  ),   
                 ],
               ),
             ),

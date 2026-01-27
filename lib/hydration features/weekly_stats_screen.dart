@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'database_service.dart';
+//import 'database_service.dart';
+import 'package:hydra_cal/database.dart';
+import 'package:hydra_cal/calorie-tracker/constants/app_colors.dart';
 
 /// shows bar chart, average, and best day
 class WeeklyStatsScreen extends StatefulWidget {
@@ -23,7 +25,7 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
 
 // load from database
   Future<void> _loadData() async {
-    final data = await DatabaseService().getWeeklyData();
+    final data = await AppDatabaseService().getWeeklyData();
     setState(() {
       _weeklyData = data;
       _isLoading = false;
@@ -52,7 +54,7 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
               fontWeight: FontWeight.w500,
             ),
           ),
-          backgroundColor: Color(0xFF03A9F4),
+          backgroundColor: AppColors.primary,
           elevation: 0,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -94,7 +96,7 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        backgroundColor: Color(0xFF03A9F4),
+        backgroundColor: AppColors.primary,
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -122,7 +124,7 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
                   'Week',
                   style: TextStyle(
                     fontSize: 14,
-                    color: Color(0xFF03A9F4),
+                    color: AppColors.primary,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -245,7 +247,7 @@ class _WeeklyStatsScreenState extends State<WeeklyStatsScreen> {
         barRods: [
           BarChartRodData(
             toY: intake,
-            color: Color(0xFF03A9F4),
+            color: AppColors.primary,
             width: 24,
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(4),

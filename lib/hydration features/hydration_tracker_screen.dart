@@ -5,12 +5,12 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'water_log.dart';
 import 'settings_screen.dart';
 import 'weekly_stats_screen.dart';
-import 'database_service.dart';
-import 'app_colors.dart';
+//import 'database_service.dart';
+import 'package:hydra_cal/database.dart';
+import 'package:hydra_cal/calorie-tracker/constants/app_colors.dart';
+//import 'app_colors.dart';
 import 'app_text_styles.dart';
 import 'app_icons.dart';
-
-
 
 class HydrationTrackerScreen extends StatefulWidget {
   const HydrationTrackerScreen({super.key});
@@ -33,9 +33,9 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
 
   // load data from Isar database
   Future<void> _loadData() async {
-    final settings = await DatabaseService().getSettings();
-    final logs = await DatabaseService().getTodayLogs();
-    final intake = await DatabaseService().getTodayIntake();
+    final settings = await AppDatabaseService().getSettings();
+    final logs = await AppDatabaseService().getTodayLogs();
+    final intake = await AppDatabaseService().getTodayIntake();
 
     setState(() {
       _dailyGoal = settings.dailyGoal;
@@ -57,15 +57,15 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(Icons.water_drop, size: 28),
+            Icon(Icons.water_drop, size: 28, color: Colors.white),
             SizedBox(width: 8),
             Text('HydroCal', style: TextStyle(color: Colors.white)),
           ],
         ),
-        backgroundColor: Color(0xFF2196F3),
+        backgroundColor: AppColors.primary,
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.settings, color: Colors.white),
             onPressed: () async {
               final updatedGoal = await Navigator.push<double>(
                 context,
@@ -83,7 +83,7 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
             },
           ),
           IconButton(
-            icon: Icon(Icons.info_outline),
+            icon: Icon(Icons.info_outline, color: Colors.white),
             onPressed: _showInfo,
           ),
         ],
@@ -183,11 +183,11 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
             _addWater(amount);
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF2196F3),
+            backgroundColor: AppColors.primary,
             padding: EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
-          child: Text('${amount}ml', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+          child: Text('${amount}ml', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white)),
         ),
       ),
     );
@@ -201,7 +201,7 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
           onPressed: _showCustomInputDialog,
           style: OutlinedButton.styleFrom(
             padding: EdgeInsets.symmetric(vertical: 16),
-            side: BorderSide(color: Color(0xFF2196F3), width: 2),
+            side: BorderSide(color: AppColors.primary, width: 2),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
           child: Text('Custom', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
@@ -244,11 +244,11 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
           elevation: 2,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           child: ListTile(
-            leading: Icon(Icons.water_drop, color: Color(0xFF2196F3), size: 32),
+            leading: Icon(Icons.water_drop, color: AppColors.primary, size: 32),
             title: Text('${log.amount}ml', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
             subtitle: Text(DateFormat('hh:mm a').format(log.timestamp)),
             trailing: IconButton(
-              icon: Icon(Icons.edit, color: Color(0xFF2196F3)),
+              icon: Icon(Icons.edit, color: AppColors.primary),
               onPressed: () => _editWaterLog(log), // open edit dialog
             ),
           ),
@@ -283,7 +283,7 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
         },
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 16),
-          side: BorderSide(color: Color(0xFF2196F3), width: 2),
+          side: BorderSide(color: AppColors.primary, width: 2),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
         icon: Icon(Icons.bar_chart),
@@ -358,21 +358,21 @@ class _HydrationTrackerScreenState extends State<HydrationTrackerScreen> {
         ..amount = int.tryParse(amountController.text) ?? log.amount
         ..timestamp = updatedTimestamp;
 
-      await DatabaseService().updateWaterLog(updatedLog); // implement this method
+      await AppDatabaseService().updateWaterLog(updatedLog); // implement this method
       await _loadData(); // refresh screen
     }
   }
 
   // add water to database
   Future<void> _addWater(int amount) async {
-    await DatabaseService().addWaterLog(amount, DateTime.now());
+    await AppDatabaseService().addWaterLog(amount, DateTime.now());
     await _loadData();
     _showFeedback('${amount}ml added successfully!');
   }
 
   // delete from database
   Future<void> _deleteLog(WaterLog log) async {
-    await DatabaseService().deleteWaterLog(log.id);
+    await AppDatabaseService().deleteWaterLog(log.id);
     await _loadData();
     _showFeedback('Log deleted');
   }
