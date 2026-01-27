@@ -303,7 +303,7 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 # 3. Project Design
 
 ## **3.1 User Interface (UI)**
----
+--- https://www.figma.com/design/rEar4Mfxhmk2LcKYpsMHPH/HydraCal?node-id=1-1266
 
 ## **3.2 User Experience (UX)**
 ---
@@ -315,6 +315,23 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 [Weekly Progress Report.docx](https://github.com/user-attachments/files/24303767/Weekly.Progress.Report.docx)
 
 #Weekly Report
+- Flutter. (n.d.). *Material design in Flutter*.  
+https://docs.flutter.dev/ui/widgets/material
+
+- Flutter. (n.d.). *Simple state management*.  
+https://docs.flutter.dev/data-and-backend/state-mgmt/simple
+
+- Flutter. (n.d.). *State management options: setState vs BLoC*.  
+https://docs.flutter.dev/data-and-backend/state-mgmt/options
+
+- Isar. (n.d.). *Quickstart tutorial*.  
+https://isar.dev/tutorials/quickstart.html
+
+- Flutter Community. (n.d.). *Circular percent indicator* [Flutter package].  
+https://pub.dev/packages/percent_indicator
+
+- Flutter Community. (n.d.). *FL Chart* [Flutter package].  
+https://pub.dev/packages/fl_chart
 # my_app
 
 A new Flutter project.
