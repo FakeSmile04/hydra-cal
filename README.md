@@ -311,10 +311,10 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ## **3.3 Consistency**
 ---
 
-# References
-[Weekly Progress Report.docx](https://github.com/user-attachments/files/24303767/Weekly.Progress.Report.docx)
-
 #Weekly Report
+[Weekly.Progress.Report (2).docx](https://github.com/user-attachments/files/24873872/Weekly.Progress.Report.2.docx)
+
+# References
 - Flutter. (n.d.). *Material design in Flutter*.  
 https://docs.flutter.dev/ui/widgets/material
 
