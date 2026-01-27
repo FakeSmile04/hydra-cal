@@ -167,13 +167,9 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - **isar** or **sqflite**: Local NoSQL/SQL database for storing water intake logs, user profiles, and goals offline-first
 - **flutter_bloc** or **provider**: State management to separate UI from business logic and data layers
 - **shared_preferences**: Store simple settings like last logged volume, reminder preferences, and UI preferences
-### Notifications & Reminders
-- **timezone**: Handle timezone-aware scheduling for accurate reminder timing
 ### Data Visualization
 - **fl_chart** or **syncfusion_flutter_charts**: Display hydration progress with circular progress indicators, bar charts for weekly/monthly trends
 - **intl**: Date and time formatting for log entries and reports
-### User Experience
-- **permission_handler**: Request notification permissions for reminder functionality
 ### **Platform Compatibility**
 - **Android OS**
 ### **Logical Design**
