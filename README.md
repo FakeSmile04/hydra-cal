@@ -12,10 +12,10 @@ HydraCal is a wellbeing and lifestyle companion App.
 ### Task Distribution
 | Stage | Aiman | Nik | Hamdi | Nazmi |
 |-------|--------|--------|-----|--------|
-| **Project Ideation & Initiation** |---|- Feature and functionalities for hydration Tracker|---|---|
-| **Requirement Analysis & Planning** |---|- Hydration Tracker Feasibility Analysis <br> - Logical Design |---|---|
-| **Planning (Gantt Chart & Timeline)** |---|---|---|---|
-| **Project Design (UI/UX & Consistency)** |---|- User Interface for Hydration Tracker <br> - Color Consistency|---|---|
+| **Project Ideation & Initiation** |- Feature and funcionalities for Calorie Tracker|- Feature and functionalities for hydration Tracker|---|---|
+| **Requirement Analysis & Planning** |- Calorie tracker Feature analysis, Logical design and the UI|- Hydration Tracker Feasibility Analysis <br> - Logical Design |---|---|
+| **Planning (Gantt Chart & Timeline)** |- Work distributed among team members|---|---|---|
+| **Project Design (UI/UX & Consistency)** |-UI and Backend Firebase for Calorie Tracker|- User Interface for Hydration Tracker <br> - Color Consistency|---|---|
 <br>
 
 # Project Documentation
