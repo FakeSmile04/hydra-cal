@@ -312,8 +312,8 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - Background: #F5F5F5 - Light gray for screens
 - Surface: #FFFFFF - White for cards and containers
 
-#Weekly Report
-[Weekly.Progress.Report (2).docx](https://github.com/user-attachments/files/24873872/Weekly.Progress.Report.2.docx)
+Weekly Report
+https://docs.google.com/document/d/15pKlwzEqvhDwXBBpOjAgqX0ZJkYeHQLamFGqNVMpLEc/edit?usp=sharing
 
 # References
 - Flutter. (n.d.). *Material design in Flutter*.  
