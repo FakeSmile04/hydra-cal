@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'database_service.dart';
+//import 'database_service.dart';
+import 'package:hydra_cal/database.dart';
+import 'package:hydra_cal/calorie-tracker/constants/app_colors.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -26,7 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // load from Isar database
   Future<void> _loadSettings() async {
-    final settings = await DatabaseService().getSettings();
+    final settings = await AppDatabaseService().getSettings();
 
     setState(() {
       _weightController.text = settings.weight.toString();
@@ -43,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return Scaffold(
-        appBar: AppBar(title: Text('SETTINGS'), backgroundColor: Color(0xFF2196F3)),
+        appBar: AppBar(title: Text('Setup Profile'), backgroundColor: AppColors.primary),
         body: Center(child: CircularProgressIndicator()),
       );
     }
@@ -51,7 +53,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('SETTINGS', style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFF2196F3),
+        backgroundColor: AppColors.primary,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -173,7 +175,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   Text('Current Goal:', style: TextStyle(fontSize: 16)),
                   Text('${_currentGoal.toInt()} ml/day',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF2196F3))),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primary)),
                 ],
               ),
             ),
@@ -182,10 +184,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: _recalculateGoal,
-                icon: Icon(Icons.calculate),
-                label: Text('RECALCULATE GOAL'),
+                icon: Icon(Icons.calculate, color: Colors.white),
+                label: Text('RECALCULATE GOAL', style: TextStyle(color: Colors.white)),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF2196F3),
+                  backgroundColor: AppColors.primary,
                   padding: EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
@@ -222,7 +224,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onPressed: () => Navigator.pop(context),
             style: OutlinedButton.styleFrom(
               padding: EdgeInsets.symmetric(vertical: 16),
-              side: BorderSide(color: Color(0xFF2196F3), width: 2),
+              side: BorderSide(color: AppColors.primary, width: 2),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
             child: Text('CANCEL'),
@@ -233,11 +235,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: ElevatedButton(
             onPressed: _saveSettings,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF2196F3),
+              backgroundColor: AppColors.primary,
               padding: EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
-            child: Text('SAVE'),
+            child: Text('SAVE', style: TextStyle(color: Colors.white)),
           ),
         ),
       ],
@@ -257,9 +259,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.water_drop, size: 64, color: Color(0xFF2196F3)),
+            Icon(Icons.water_drop, size: 64, color: AppColors.primary),
             SizedBox(height: 16),
-            Text('${newGoal.toInt()} ml', style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Color(0xFF2196F3))),
+            Text('${newGoal.toInt()} ml', style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: AppColors.primary)),
             Text('per day'),
           ],
         ),
@@ -304,7 +306,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
 
     // load the existing settings from database
-    final settings = await DatabaseService().getSettings();
+    final settings = await AppDatabaseService().getSettings();
 
     // update the fields
     settings.weight = weight;
@@ -314,7 +316,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     settings.dailyGoal = goal;
     settings.lastUpdated = DateTime.now();
 
-    await DatabaseService().updateSettings(settings);
+    await AppDatabaseService().updateSettings(settings);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Settings saved successfully!'), backgroundColor: Colors.green),

@@ -1,23 +1,30 @@
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
-import 'water_log.dart';
-import 'user_settings.dart';
+import 'package:hydra_cal/hydration features/water_log.dart';
+import 'package:hydra_cal/hydration features/user_settings.dart';
+import 'package:hydra_cal/guidebot/models/chat_session.dart';
 
-class DatabaseService {
-  static final DatabaseService _instance = DatabaseService._internal();
-  factory DatabaseService() => _instance;
-  DatabaseService._internal();
+class AppDatabaseService {
+  static final AppDatabaseService _instance = AppDatabaseService._internal();
+  factory AppDatabaseService() => _instance;
+  AppDatabaseService._internal();
 
   static Isar? _isar;
 
+  /// Initialize the single Isar database for the whole app
   Future<void> initialize() async {
     if (_isar != null) return;
 
     final dir = await getApplicationDocumentsDirectory();
 
     _isar = await Isar.open(
-      [WaterLogSchema, UserSettingsSchema],
+      [
+        WaterLogSchema,
+        UserSettingsSchema,
+        ChatSessionSchema,
+      ],
       directory: dir.path,
+      name: 'hydra_cal_db', // optional, but good to have
     );
   }
 
@@ -28,6 +35,7 @@ class DatabaseService {
     return _isar!;
   }
 
+  // -------------------- Hydration / WaterLog Methods --------------------
   // get user settings
   Future<UserSettings> getSettings() async {
     var settings = await isar.userSettings.get(1);
@@ -133,6 +141,39 @@ class DatabaseService {
   Future<void> deleteWaterLog(int logId) async {
     await isar.writeTxn(() async {
       await isar.waterLogs.delete(logId);
+    });
+  }
+
+  // -------------------- Chat Methods --------------------
+  Future<ChatSession> createSession() async {
+    final session = ChatSession()
+      ..createdAt = DateTime.now()
+      ..messages = [];
+    await isar.writeTxn(() async {
+      await isar.chatSessions.put(session);
+    });
+    return session;
+  }
+
+  Future<void> saveMessage(ChatSession session, String sender, String content) async {
+    final message = ChatMessage()
+      ..sender = sender
+      ..content = content
+      ..timestamp = DateTime.now();
+    session.messages.add(message);
+
+    await isar.writeTxn(() async {
+      await isar.chatSessions.put(session);
+    });
+  }
+
+  Future<List<ChatSession>> getAllSessions() async {
+    return await isar.chatSessions.where().sortByCreatedAtDesc().findAll();
+  }
+
+  Future<void> deleteSessions(List<int> sessionIds) async {
+    await isar.writeTxn(() async {
+      await isar.chatSessions.deleteAll(sessionIds);
     });
   }
 }
