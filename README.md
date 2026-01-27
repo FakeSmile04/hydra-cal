@@ -168,7 +168,6 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 - **flutter_bloc** or **provider**: State management to separate UI from business logic and data layers
 - **shared_preferences**: Store simple settings like last logged volume, reminder preferences, and UI preferences
 ### Notifications & Reminders
-- **flutter_local_notifications**: Schedule and display hydration reminder notifications at user-defined intervals
 - **timezone**: Handle timezone-aware scheduling for accurate reminder timing
 ### Data Visualization
 - **fl_chart** or **syncfusion_flutter_charts**: Display hydration progress with circular progress indicators, bar charts for weekly/monthly trends
