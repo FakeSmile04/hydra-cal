@@ -12,10 +12,10 @@ HydraCal is a wellbeing and lifestyle companion App.
 ### Task Distribution
 | Stage | Aiman | Nik | Hamdi | Nazmi |
 |-------|--------|--------|-----|--------|
-| **Project Ideation & Initiation** |---|---|---|---|
-| **Requirement Analysis & Planning** |---|---|---|---|
+| **Project Ideation & Initiation** |---|- Feature and functionalities for hydration Tracker|---|---|
+| **Requirement Analysis & Planning** |---|- Hydration Tracker Feasibility Analysis <br> - Logical Design |---|---|
 | **Planning (Gantt Chart & Timeline)** |---|---|---|---|
-| **Project Design (UI/UX & Consistency)** |---|---|---|---|
+| **Project Design (UI/UX & Consistency)** |---|- User Interface for Hydration Tracker <br> - Color Consistency|---|---|
 <br>
 
 # Project Documentation
@@ -309,7 +309,13 @@ Flags ingredients that may conflict with cultural, religious, or dietary restric
 ---
 
 ## **3.3 Consistency**
----
+### A. Color Consitency 
+- Primary Purple: #7B2CBF - Main brand color, buttons, headers
+- Primary Dark: #5A189A - App bars, navigation, title screens
+- Primary Light: #9D4EDD - Progress indicators when goal achieved
+- Accent Purple: #C77DFF - Highlights, icons, success states
+- Background: #F5F5F5 - Light gray for screens
+- Surface: #FFFFFF - White for cards and containers
 
 #Weekly Report
 [Weekly.Progress.Report (2).docx](https://github.com/user-attachments/files/24873872/Weekly.Progress.Report.2.docx)
